@@ -1,0 +1,23 @@
+---
+//@ts-nocheck
+import Layout from "../layouts/Layout.astro";
+const fashionURL = "https://kea-alt-del.dk/t7/api/products";
+const data = await fetch(fashionURL).then((res) => res.json());
+console.log(data);
+
+import ProductCard from "../components/ProductCard.astro";
+---
+
+<a href="index.astro">Go back :3</a>
+<h1>Productlist</h1>
+
+<main>
+  <!-- <ProductCard /> -->
+  {data.map((product) => <ProductCard {product} />)}
+</main>
+
+<style>
+  main {
+    background-color: beige;
+  }
+</style>
